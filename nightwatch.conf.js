@@ -1,5 +1,6 @@
 const chromedriver = require("chromedriver");
 
+const defaultTimeout = 15000
 module.exports = {
   src_folders : ['tests'],
   output_folder: 'reports',
@@ -30,6 +31,20 @@ module.exports = {
           args: ['disable-gpu']
         }
       }
-    }
+    },
+
+    firefox : {
+      globals: {
+          waitForConditionTimeout: defaultTimeout // when the networks connection is slow
+      },
+      webdriver: {
+          server_path: './node_modules/.bin/geckodriver',
+          port: 4444
+      },
+      desiredCapabilities: {
+          browserName: "firefox",
+          acceptInsecureCerts: true
+      }
+  },
   }
 };

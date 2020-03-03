@@ -2,7 +2,7 @@ module.exports = {
   'Searching Google' : function (browser) {
     browser
       .url('http://google.com')
-      .setValue('input[name="qsadasdasdasdasdas"]', '1')
+      .setValue('input[name="q"]', '1')
       .assert.title('Google')
       .assert.visible('input[name="q"]')
       .end();
@@ -11,7 +11,9 @@ module.exports = {
     browser
       .url('http://google.com')
       .assert.title('Google')
-      .assert.visible('input[name="q"]')
+      .setValue('input[name="q"]', 'peru')
+      .pause(2000)
+      .click('.gNO89b')
       .end();
   }
 };
